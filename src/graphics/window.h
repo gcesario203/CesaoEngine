@@ -4,13 +4,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-
 namespace cesaoEngine
 {
     namespace graphics
     {
+#define MAX_KEYS 1024
+#define MAX_BUTTONS 32
 
-        void windowResize(GLFWwindow *pWindow, int pWidth, int pHeight);
+        void window_resize(GLFWwindow *pWindow, int pWidth, int pHeight);
 
         class Window
         {
@@ -19,6 +20,12 @@ namespace cesaoEngine
             int mWidth, mHeight;
             GLFWwindow *mWindow;
             bool mClosed;
+
+            // VSCODE NÃO PERMITE EU FAZER AS COISAS CERTAS
+            // static bool mKeys[MAX_KEYS];
+            // static bool mMouseButtons[MAX_BUTTONS];
+            // static double mX, mY;
+
         public:
             Window(const char *pTitle, int pWidth, int pHeight);
             ~Window();
@@ -27,10 +34,26 @@ namespace cesaoEngine
             bool closed() const;
             void clear() const;
 
-            inline int getWidth() const { return mWidth ;}
-            inline int getHeight() const { return mHeight ;}
+            inline int getWidth() const { return mWidth; }
+            inline int getHeight() const { return mHeight; }
+
+            bool isKeyPressed(unsigned int pKeyCode) const;
+            bool isMousePressed(unsigned int pButton) const;
+
+            void getMousePos() const;
+
+            bool mKeys[MAX_KEYS];
+            bool mMouseButtons[MAX_BUTTONS];
+            double mX, mY;
+
         private:
             bool init();
+
+            static void key_callback(GLFWwindow *pWindow, int pKey, int pScanCode, int pAction, int pMods);
+            static void mouse_button_callback(GLFWwindow *pWindow, int pButton, int pAction, int pMods);
+            static void cursor_position_callback(GLFWwindow *pWindow, double pXpos, double pYpos);
         };
+
     }
+
 }

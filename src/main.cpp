@@ -16,6 +16,19 @@ int main()
     while (!lWindow.closed())
     {
         lWindow.clear();
+
+        if(lWindow.isKeyPressed(GLFW_KEY_A))
+        {
+            std::cout<< "PQ DEUS" << std::endl;
+        }
+
+        if(lWindow.isMousePressed(GLFW_MOUSE_BUTTON_1))
+        {
+            std::cout<< "meu deus" << std::endl;
+        }
+
+        lWindow.getMousePos();
+        
         #if 0
         glBegin(GL_QUADS);
 
