@@ -26,11 +26,15 @@ int main()
         lWindow.clear();
 
         vec2 hypa(1.0f,1.0f);
-        vec3 hypa2(2.0f,3.0f, 3.0f);
+        vec3 hypa2(2.0f,5.0f, 3.0f);
         vec4 hypa3(2.0f,3.0f, 3.0f, 4.0f);
         vec4 hypa4(2.0f,3.0f, 3.0f, 4.0f);
 
-        std::cout << "ai meudeus " << (hypa3 + hypa4)  << std::endl;
+        mat4 position = mat4::translation(hypa2);
+
+        std::cout << "ai meudeus 1: " << (position.mElements[0 + 3 * 4])  << std::endl;
+        std::cout << "ai meudeus 2: " << (position.mElements[1 + 3 * 4])  << std::endl;
+        std::cout << "ai meudeus 3: " << (position.mElements[2 + 3 * 4])  << std::endl;
 
         if(lWindow.isKeyPressed(GLFW_KEY_A))
         {
