@@ -17,16 +17,13 @@ namespace cesaoEngine
         {
             for (int i = 0; i < 4 * 4; i++)
             {
-                if (i >= 0 && i <= 3)
-                {
-                    mElements[i + i * 4] = pDiagonal;
-                    std::cout << mElements[i + i * 4] << "ELEMENTO " << (i + i * 4) << std::endl;
-                }
-                else
-                {
-                    mElements[i] = 0.0f;
-                }
+                mElements[i] = 0.0f;
             }
+
+            mElements[0 + 0 * 4] = pDiagonal;
+            mElements[1 + 1 * 4] = pDiagonal;
+            mElements[2 + 2 * 4] = pDiagonal;
+            mElements[3 + 3 * 4] = pDiagonal;
         }
 
         mat4 mat4::identity()
@@ -101,7 +98,7 @@ namespace cesaoEngine
             result.mElements[3 + 2 * 4] = -1.0f;
             result.mElements[2 + 3 * 4] = c;
 
-            return c;
+            return result;
         };
 
         mat4 mat4::translation(const vec3 &pTranslation)
