@@ -5,14 +5,6 @@ namespace cesaoEngine
     namespace maths
     {
 
-        vec4::vec4()
-        {
-            mX = 0.0f;
-            mY = 0.0f;
-            mZ = 0.0f;
-            mW = 0.0f;
-        }
-
         vec4::vec4(const float &pX, const float &pY, const float &pZ, const float &pW)
         {
             this->mX = pX;

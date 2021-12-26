@@ -9,8 +9,8 @@ namespace cesaoEngine
         {
             float mX, mY, mZ, mW;
 
-            vec4();
-
+            //  Constutor padrão de um array de 4 posições
+            vec4() = default;
             // Contrutor da struct de vetores recebendo endereços de memoria
             vec4(const float &pX, const float &pY, const float &pZ, const float &pW);
 

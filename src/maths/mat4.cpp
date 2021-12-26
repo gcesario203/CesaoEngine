@@ -1,4 +1,5 @@
 #include "mat4.h"
+#include <iostream>
 
 namespace cesaoEngine
 {
@@ -19,6 +20,7 @@ namespace cesaoEngine
                 if (i >= 0 && i <= 3)
                 {
                     mElements[i + i * 4] = pDiagonal;
+                    std::cout << mElements[i + i * 4] << "ELEMENTO " << (i + i * 4) << std::endl;
                 }
                 else
                 {

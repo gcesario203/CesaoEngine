@@ -32,9 +32,9 @@ int main()
 
         mat4 position = mat4::translation(hypa2);
 
-        std::cout << "ai meudeus 1: " << (position.mElements[0 + 3 * 4])  << std::endl;
-        std::cout << "ai meudeus 2: " << (position.mElements[1 + 3 * 4])  << std::endl;
-        std::cout << "ai meudeus 3: " << (position.mElements[2 + 3 * 4])  << std::endl;
+        vec4& column = position.mColumns[2];
+
+        std::cout << (column) << " AQUI EM" << std::endl;
 
         if(lWindow.isKeyPressed(GLFW_KEY_A))
         {
