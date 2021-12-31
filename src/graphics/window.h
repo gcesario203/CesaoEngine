@@ -21,11 +21,6 @@ namespace cesaoEngine
             GLFWwindow *mWindow;
             bool mClosed;
 
-            // VSCODE NÃO PERMITE EU FAZER AS COISAS CERTAS
-            // static bool mKeys[MAX_KEYS];
-            // static bool mMouseButtons[MAX_BUTTONS];
-            // static double mX, mY;
-
         public:
             Window(const char *pTitle, int pWidth, int pHeight);
             ~Window();
@@ -40,10 +35,11 @@ namespace cesaoEngine
             bool isKeyPressed(unsigned int pKeyCode) const;
             bool isMousePressed(unsigned int pButton) const;
 
-            void getMousePos() const;
+            void getMousePos(double &pX, double &pY) const;
 
             bool mKeys[MAX_KEYS];
             bool mMouseButtons[MAX_BUTTONS];
+            // double mX, mY;
             double mX, mY;
 
         private:

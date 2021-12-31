@@ -14,13 +14,30 @@ int main()
 
     GLfloat lVertices[] =
         {
-            0,0,0,
-            8,0,0,
-            0,3,0,
-            0,3,0,
-            8,3,0,
-            8,0,0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            3,
+            0,
+            8,
+            3,
+            0,
+            8,
+            0,
+            0,
         };
+
+    GLushort lIndexes[] = {
+        0,1,2,
+        2,3,0
+    };
 
     GLuint lVbo, lVao;
     glGenVertexArrays(1, &lVao);
@@ -39,13 +56,20 @@ int main()
     lShader.setUniformMat4("pr_matrix", lOrtho);
     lShader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 
-    lShader.setUniform2f("light_pos", vec2(8.0f, 4.0f));
+    lShader.setUniform2f("light_pos", vec2(4.0f, 1.5f));
     lShader.setUniform4f("colour", vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
     while (!lWindow.closed())
     {
         lWindow.clear();
+        double x, y;
+
+        lWindow.getMousePos(x, y);
+        lShader.setUniform2f("light_pos", vec2((float)(x * 16.0f / 960.0f),
+                                                (float)(9.0f - y * 9.0f / 540.0f)));
         glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        // glDrawElements(GL_TRIANGLES, ib)
         lWindow.update();
     }
 

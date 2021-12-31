@@ -139,9 +139,10 @@ namespace cesaoEngine
             }
         }
 
-        void Window::getMousePos() const
+        void Window::getMousePos(double &pX, double &pY) const
         {
-            std::cout << mX << " Posição x " <<  mY << " Posição y" <<  std::endl;
+            pX = mX;
+            pY = mY;
         }
     }
 }
