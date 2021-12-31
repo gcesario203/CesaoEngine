@@ -9,7 +9,7 @@ namespace cesaoEngine
 
         // double Window::mX;
         // double Window::mY;
-        
+
         Window::Window(const char *pTitle, int pWidth, int pHeight)
         {
             mTitle = pTitle;
@@ -54,7 +54,7 @@ namespace cesaoEngine
 
             glfwMakeContextCurrent(mWindow);
             glfwSetWindowUserPointer(mWindow, this);
-            glfwSetWindowSizeCallback(mWindow, window_resize); 
+            glfwSetWindowSizeCallback(mWindow, window_resize);
             glfwSetKeyCallback(mWindow, key_callback);
             glfwSetMouseButtonCallback(mWindow, mouse_button_callback);
             glfwSetCursorPosCallback(mWindow, cursor_position_callback);
@@ -77,12 +77,16 @@ namespace cesaoEngine
 
         void Window::update()
         {
+            GLenum lError = glGetError();
 
-            glfwSwapBuffers(mWindow);
-            glfwGetFramebufferSize(mWindow, &mWidth, &mHeight);
+            if( lError != GL_NO_ERROR)
+                std::cout << "OpenGL error " << lError << std::endl;
 
-            window_resize(mWindow, mWidth, mHeight);
             glfwPollEvents();
+            glfwSwapBuffers(mWindow);
+            // glfwGetFramebufferSize(mWindow, &mWidth, &mHeight);
+
+            // window_resize(mWindow, mWidth, mHeight);
         }
 
         void Window::clear() const
@@ -101,7 +105,7 @@ namespace cesaoEngine
 
             lWindow->mKeys[pKey] = pAction != GLFW_RELEASE;
         }
-        
+
         void Window::mouse_button_callback(GLFWwindow *pWindow, int pButton, int pAction, int pMods)
         {
             Window *lWindow = (Window *)glfwGetWindowUserPointer(pWindow);
